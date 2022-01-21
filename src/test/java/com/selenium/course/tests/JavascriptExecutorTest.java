@@ -3,25 +3,22 @@ package com.selenium.course.tests;
 import com.selenium.course.tests.base.TestUtil;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.time.Duration;
-
-public class FirstTest extends TestUtil {
-//    //Selenium
+public class JavascriptExecutorTest extends TestUtil {
     private WebDriver driver = setUp();
-//
+
 //    @BeforeTest //This cames from TestNG
 //    public void setUp(){
 //        WebDriverManager.chromedriver().setup(); //this download the needed web driver
-//        driver = new ChromeDriver(); //creates the session and open the
+//        driver = new ChromeDriver(); //creates the session and open the browser
 //    }
 //
 //    @AfterTest //This cames from TestNG
@@ -31,7 +28,7 @@ public class FirstTest extends TestUtil {
 //    }
 
     @Test //This cames from TestNG
-    public void logIn() throws InterruptedException {
+    public void logInWithJavascriptAction() throws InterruptedException {
         driver.get("https://www.saucedemo.com/");
 
         WebElement userNameInput = driver.findElement(By.id("user-name"));
@@ -48,33 +45,12 @@ public class FirstTest extends TestUtil {
 
         Assert.assertTrue(productsMainLabel.isDisplayed());
         Assert.assertTrue(shoppingCartLink.isDisplayed());
+        Thread.sleep(5000);
+
+        JavascriptExecutor script = (JavascriptExecutor) driver;
+        script.executeScript("arguments[0].scrollIntoView",
+                driver.findElement(By.xpath("//a[@href='https://www.linkedin.com/company/sauce-labs/']")));
+
+        Thread.sleep(5000);
     }
-
-    @DataProvider (name = "users")
-    public Object[][] getUsers(){
-        return new Object[][]{
-                {"standard_user", "wrongPass"},
-                {"wrong_User", "secret_sauce"},
-                {"blah", "blah"}
-        };
-    }
-
-    @Test (dataProvider = "users") //This cames from TestNG
-    public void unsuccessfulLogin(String userName, String password){
-        driver.get("https://www.saucedemo.com/");
-
-        WebElement userNameInput = driver.findElement(By.id("user-name"));
-        userNameInput.sendKeys(userName);
-
-        WebElement passwordInput = driver.findElement(By.cssSelector("[placeholder=Password]"));
-        passwordInput.sendKeys(password);
-
-        WebElement loginBtn = driver.findElement(By.name("login-button"));
-        loginBtn.click();
-
-        WebElement wrongUserBtn = driver.findElement(By.cssSelector(".error-button"));
-
-        Assert.assertTrue(wrongUserBtn.isDisplayed());
-    }
-
 }
