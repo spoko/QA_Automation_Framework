@@ -1,29 +1,55 @@
 package com.selenium.course.tests.base;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
+import driver.DriverFactory;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 
-import java.time.Duration;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
 
 public class TestUtil {
     //Selenium
-    private WebDriver driver;
+    public WebDriver driver;
+    private String applicationUrl, browser;
+    private int implicitWaitSeconds;
 
     @BeforeTest //This cames from TestNG
-    public WebDriver setUp(){
-        WebDriverManager.chromedriver().setup(); //this download the needed web driver
-        driver = new ChromeDriver(); //creates the session and open the
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-        return driver;
+    public void setUp(){
+        setupBrowserDriver();
+        loadInitialPage();
+    }
+
+    private void loadInitialPage() {
+        driver.get(applicationUrl);
     }
 
     @AfterTest //This cames from TestNG
     public void tearDown(){
         //driver.close(); closes only the current drive not closing the session
         driver.quit(); //closing and killing the session
+    }
+
+    private void setupBrowserDriver(){
+        try{
+            FileInputStream configFile = new
+                    FileInputStream("src/test/resources/config.properties");
+            Properties config = new Properties();
+            config.load(configFile);
+            applicationUrl = config.getProperty("url");
+            implicitWaitSeconds = Integer.parseInt(config.getProperty("implicitWait"));
+            browser = config.getProperty("targetBrowser");
+        }catch (IOException e){
+            System.out.println(e);
+        }
+
+        switch (browser){
+            case "chrome":
+                DriverFactory.getChromeDriver(implicitWaitSeconds);
+            case "firefox":
+                DriverFactory.getFireFoxDriver(implicitWaitSeconds);
+        }
+
     }
 }
