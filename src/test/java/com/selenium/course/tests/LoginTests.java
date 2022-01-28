@@ -28,7 +28,7 @@ public class LoginTests extends TestUtil {
     }
 
         @Test (dataProvider = "usersCsv") //This cames from TestNG
-        public void unsuccessfulLogin(String userName, String password){
+        public void unsuccessfulLogin(String userName, String password) throws InterruptedException {
 
             WebElement userNameInput = driver.findElement(By.id("user-name"));
             userNameInput.sendKeys(userName);
@@ -42,5 +42,6 @@ public class LoginTests extends TestUtil {
             WebElement wrongUserBtn = driver.findElement(By.cssSelector(".error-button"));
 
             Assert.assertTrue(wrongUserBtn.isDisplayed());
+            Thread.sleep(5000);
         }
     }
