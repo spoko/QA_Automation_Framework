@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class ProductsPage {
     protected WebDriver driver;
-    private static final String ADD_TO_CARD_LOCATOR = "//button[@id='add-to-cart-sauce-labs-'%s'']";
+    private static final String ADD_TO_CARD_LOCATOR = "//button[@id='add-to-cart-sauce-labs-%s']";
 
     @FindBy(id = "shopping_cart_container")
     private WebElement shoppingCartBtn;

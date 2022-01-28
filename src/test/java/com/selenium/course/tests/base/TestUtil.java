@@ -46,9 +46,11 @@ public class TestUtil {
 
         switch (browser){
             case "chrome":
-                DriverFactory.getChromeDriver(implicitWaitSeconds);
+                driver = DriverFactory.getChromeDriver(implicitWaitSeconds);
+                break;
             case "firefox":
-                DriverFactory.getFireFoxDriver(implicitWaitSeconds);
+                driver = DriverFactory.getFireFoxDriver(implicitWaitSeconds);
+                break;
         }
 
     }
