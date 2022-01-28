@@ -15,23 +15,8 @@ import java.util.Collections;
 
 public class WaitTest extends TestUtil {
 
-//    @BeforeTest //This cames from TestNG
-//    public void setUp(){
-//        WebDriverManager.chromedriver().setup(); //this download the needed web driver
-//        driver = new ChromeDriver(); //creates the session and open the
-//        //Implicit Wait
-//        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-//    }
-//
-//    @AfterTest //This cames from TestNG
-//    public void tearDown(){
-//        //driver.close(); closes only the current drive not closing the session
-//        driver.quit(); //closing and killing the session
-//    }
-
     @Test//This cames from TestNG
     public void unsuccessfulLogin(){
-        driver.get("https://www.saucedemo.com/");
         //before using Explicit wait reset the implicit one:
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
         //Explicit wait
@@ -57,7 +42,6 @@ public class WaitTest extends TestUtil {
 
     @Test//This cames from TestNG
     public void unsuccessfulLoginFluentWait(){
-        driver.get("https://www.saucedemo.com/");
         //before using Explicit wait reset the implicit one:
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
         //Fluent

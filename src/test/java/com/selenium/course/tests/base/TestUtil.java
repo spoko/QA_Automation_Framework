@@ -4,7 +4,6 @@ import driver.DriverFactory;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
@@ -29,6 +28,7 @@ public class TestUtil {
     public void tearDown(){
         //driver.close(); closes only the current drive not closing the session
         driver.quit(); //closing and killing the session
+        //driver = null;
     }
 
     private void setupBrowserDriver(){
@@ -52,6 +52,5 @@ public class TestUtil {
                 driver = DriverFactory.getFireFoxDriver(implicitWaitSeconds);
                 break;
         }
-
     }
 }

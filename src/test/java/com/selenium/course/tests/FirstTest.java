@@ -10,8 +10,7 @@ import org.testng.annotations.Test;
 public class FirstTest extends TestUtil {
 
     @Test //This cames from TestNG
-    public void logIn() throws InterruptedException {
-        //driver.get("https://www.saucedemo.com/");
+    public void logIn() {
 
         WebElement userNameInput = driver.findElement(By.id("user-name"));
         userNameInput.sendKeys("standard_user");
@@ -40,7 +39,6 @@ public class FirstTest extends TestUtil {
 
     @Test (dataProvider = "users") //This cames from TestNG
     public void unsuccessfulLogin(String userName, String password){
-        //driver.get("https://www.saucedemo.com/");
 
         WebElement userNameInput = driver.findElement(By.id("user-name"));
         userNameInput.clear();

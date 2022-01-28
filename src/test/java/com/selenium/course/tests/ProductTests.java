@@ -22,7 +22,6 @@ public class ProductTests extends TestUtil {
         softAssert.assertEquals(productPage.getNumbersInTheCart(), 4,
                 "Because we have added one item in the cart.");
 
-
         //Hard assert
         Assert.assertEquals(productPage.getNumbersInTheCart(), 1,
                 "Because we have added one item in the cart.");

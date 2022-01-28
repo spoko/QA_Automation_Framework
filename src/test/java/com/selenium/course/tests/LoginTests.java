@@ -29,7 +29,6 @@ public class LoginTests extends TestUtil {
 
         @Test (dataProvider = "usersCsv") //This cames from TestNG
         public void unsuccessfulLogin(String userName, String password) {
-
             WebElement userNameInput = driver.findElement(By.id("user-name"));
             userNameInput.sendKeys(userName);
 

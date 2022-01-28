@@ -1,13 +1,17 @@
-<?xml version="1.0"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="Test Demo Suite" parallel="classes" thread-count="2">
-    <test name="Selenium Course Suite tests">
-        <packages>
-            <package name="com.selenium.course.tests.*"/>
-        </packages>
-<!--        <classes>-->
-<!--            <class name="com.selenium.course.tests.WaitTest"></class>-->
-<!--        </classes>-->
+<suite thread-count="1" verbose="1" name="QA Automation course"
+       annotations="JDK" parallel="tests">
+
+    <test name="First Test Suite">
+        <classes>
+            <class name="com.selenium.course.tests.FirstTest"/>
+        </classes>
+    </test>
+
+    <test name="Product Tests suite">
+        <classes>
+            <class name="com.selenium.course.tests.ProductTests"/>
+        </classes>
     </test>
 </suite>
