@@ -1,6 +1,6 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite thread-count="2" verbose="1" name="QA Automation course"
+<suite thread-count="4" verbose="1" name="QA Automation course"
        annotations="JDK" parallel="tests">
 
     <test name="First Test Suite">
@@ -8,10 +8,14 @@
             <class name="com.selenium.course.tests.FirstTest"/>
         </classes>
     </test>
-
-    <test name="Product Tests suite">
+    <test name="JS executor">
         <classes>
-            <class name="com.selenium.course.tests.ProductTests"/>
+            <class name="com.selenium.course.tests.JavascriptExecutorTest"/>
+        </classes>
+    </test>
+    <test name="Wait Test">
+        <classes>
+            <class name="com.selenium.course.tests.WaitTest"/>
         </classes>
     </test>
 </suite>
