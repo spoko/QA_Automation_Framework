@@ -15,7 +15,7 @@ public class DriverFactory {
         return driver;
     }
 
-    public static WebDriver getFireFoxDriver(int implicitWaitSeconds){
+    public static WebDriver getFireFoxDriver(){
         //Todo add firefox driver creation logic here
         return null;
     }
