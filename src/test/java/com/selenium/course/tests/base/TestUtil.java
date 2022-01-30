@@ -38,7 +38,7 @@ public class TestUtil {
             Properties config = new Properties();
             config.load(configFile);
             applicationUrl = config.getProperty("url");
-            implicitWaitSeconds = Integer.parseInt(config.getProperty("implicitWait"));
+            //implicitWaitSeconds = Integer.parseInt(config.getProperty("implicitWait"));
             browser = config.getProperty("targetBrowser");
             //System.out.println("webhook test");
         }catch (IOException e){
@@ -47,10 +47,10 @@ public class TestUtil {
 
         switch (browser){
             case "chrome":
-                driver = DriverFactory.getChromeDriver(implicitWaitSeconds);
+                driver = DriverFactory.getChromeDriver();
                 break;
             case "firefox":
-                driver = DriverFactory.getFireFoxDriver(implicitWaitSeconds);
+                driver = DriverFactory.getFireFoxDriver();
                 break;
         }
     }

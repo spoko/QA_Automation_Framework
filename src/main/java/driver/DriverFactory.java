@@ -8,10 +8,10 @@ import java.time.Duration;
 
 public class DriverFactory {
 
-    public static WebDriver getChromeDriver(int implicitWaitSeconds) {
+    public static WebDriver getChromeDriver() {
         WebDriverManager.chromedriver().setup(); //this download the needed web driver
         WebDriver driver = new ChromeDriver(); //creates the session and open the
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(implicitWaitSeconds));
+        //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(implicitWaitSeconds));
         return driver;
     }
 
