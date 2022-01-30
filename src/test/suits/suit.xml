@@ -13,9 +13,9 @@
             <class name="com.selenium.course.tests.JavascriptExecutorTest"/>
         </classes>
     </test>
-    <test name="Wait Test">
-        <classes>
-            <class name="com.selenium.course.tests.WaitTest"/>
-        </classes>
-    </test>
+<!--    <test name="Wait Test">-->
+<!--        <classes>-->
+<!--            <class name="com.selenium.course.tests.WaitTest"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 </suite>
