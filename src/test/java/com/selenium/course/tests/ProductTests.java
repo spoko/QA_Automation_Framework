@@ -15,11 +15,11 @@ public class ProductTests extends TestUtil {
 
         //Soft assert
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertEquals(productPage.getNumbersInTheCart(), 2,
+        softAssert.assertEquals(productPage.getNumbersInTheCart(), 1,
                 "Because we have added one item in the cart.");
         softAssert.assertEquals(productPage.getNumbersInTheCart(), 1,
                 "Because we have added one item in the cart.");
-        softAssert.assertEquals(productPage.getNumbersInTheCart(), 4,
+        softAssert.assertEquals(productPage.getNumbersInTheCart(), 1,
                 "Because we have added one item in the cart.");
 
         //Hard assert

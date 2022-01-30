@@ -2,8 +2,8 @@ package com.selenium.course.tests.base;
 
 import driver.DriverFactory;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
@@ -14,7 +14,7 @@ public class TestUtil {
     private String applicationUrl, browser;
     private int implicitWaitSeconds;
 
-    @BeforeTest //This cames from TestNG
+    @BeforeMethod //This cames from TestNG
     public void setUp(){
         setupBrowserDriver();
         loadInitialPage();
@@ -24,7 +24,7 @@ public class TestUtil {
         driver.get(applicationUrl);
     }
 
-    @AfterTest //This cames from TestNG
+    @AfterMethod //This cames from TestNG
     public void tearDown(){
         //driver.close(); closes only the current drive not closing the session
         driver.quit(); //closing and killing the session
