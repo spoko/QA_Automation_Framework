@@ -12,15 +12,16 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 import java.util.Collections;
+import java.util.concurrent.TimeUnit;
 
 public class WaitTest extends TestUtil {
 
     @Test//This cames from TestNG
     public void unsuccessfulLogin(){
         //before using Explicit wait reset the implicit one:
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
+        driver.manage().timeouts().implicitlyWait(TimeUnit.SECONDS.toSeconds(5),TimeUnit.SECONDS);
         //Explicit wait
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        WebDriverWait wait = new WebDriverWait(driver, TimeUnit.SECONDS.toSeconds(5));
 
         WebElement userNameInput = driver.findElement(By.id("user-name"));
         userNameInput.sendKeys("standard_user");
@@ -32,7 +33,7 @@ public class WaitTest extends TestUtil {
         //Explicit Wait
         wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.name("login-button"))));
         //after finished using Explicit wait set back the implicit one:
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().timeouts().implicitlyWait(TimeUnit.SECONDS.toSeconds(5), TimeUnit.SECONDS);
         loginBtn.click();
 
         WebElement wrongUserBtn = driver.findElement(By.cssSelector(".error-button"));
@@ -43,7 +44,7 @@ public class WaitTest extends TestUtil {
     @Test//This cames from TestNG
     public void unsuccessfulLoginFluentWait(){
         //before using Explicit wait reset the implicit one:
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
+        driver.manage().timeouts().implicitlyWait(TimeUnit.SECONDS.toSeconds(5), TimeUnit.SECONDS);
         //Fluent
         FluentWait fluentWait = new FluentWait(driver)
                 .withTimeout(Duration.ofSeconds(20))
@@ -60,7 +61,7 @@ public class WaitTest extends TestUtil {
         //Explicit Wait
         fluentWait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.name("login-button"))));
         //after finished using Explicit wait set back the implicit one:
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().timeouts().implicitlyWait(TimeUnit.SECONDS.toSeconds(5), TimeUnit.SECONDS);
         loginBtn.click();
 
         WebElement wrongUserBtn = driver.findElement(By.cssSelector(".error-button"));
