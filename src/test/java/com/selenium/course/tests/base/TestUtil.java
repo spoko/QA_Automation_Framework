@@ -40,7 +40,7 @@ public class TestUtil {
             applicationUrl = config.getProperty("url");
             implicitWaitSeconds = Integer.parseInt(config.getProperty("implicitWait"));
             browser = config.getProperty("targetBrowser");
-            //System.out.println("webhook test");
+            System.out.println("webhook test");
         }catch (IOException e){
             System.out.println(e);
         }
