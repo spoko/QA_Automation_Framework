@@ -23,6 +23,12 @@ pipeline {
                 echo 'Testing...'
             }
         }
+
+        stage('Automation working') {
+                    steps {
+                        echo 'Automation is awesome!'
+                    }
+                }
     }
 
     post {
